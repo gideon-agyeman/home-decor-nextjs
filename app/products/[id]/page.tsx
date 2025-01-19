@@ -1,11 +1,16 @@
 import React from 'react';
 import Image from 'next/image';
-import { fetchSingleProduct } from '@/utils/fetchProducts';
+import { fetchSingleProduct, findExistingReview } from '@/utils/fetchData';
 import AddToCart from '@/components/single-product/AddToCart';
+
 import BreadCrumbs from '@/components/single-product/BreadCrumbs';
 import StarRatings from '@/components/single-product/StarRatings';
 import FavoriteToggleButton from '@/components/products-page/FavoriteToggleButton';
+import ShareButton from '@/components/single-product/ShareButton';
 import { formatPrice } from '@/utils/formatPrice';
+import ProductReviews from '@/components/reviews/ProductReviews';
+import SubmitReview from '@/components/reviews/SubmitReview';
+import { auth } from '@clerk/nextjs/server';
 
 type Params = {
   params: { id: string };
@@ -16,6 +21,8 @@ async function SingleProductPage({ params }: Params) {
   const { name, image, company, description, price } = await fetchSingleProduct(
     id
   );
+  const { userId } = await auth();
+  const notReviewed = userId && !(await findExistingReview(userId, id));
 
   return (
     <section>
@@ -34,7 +41,10 @@ async function SingleProductPage({ params }: Params) {
         <div>
           <div className="flex gap-x-8 items-center">
             <h1 className="capitalize text-3xl font-bold">{name}</h1>
-            <FavoriteToggleButton productId={id} />
+            <div className="flex items-center gap-x-2">
+              <FavoriteToggleButton productId={id} />
+              <ShareButton name={name} productId={id} />
+            </div>
           </div>
           <StarRatings productId={id} />
           <h4 className="text xl mt-2">{company}</h4>
@@ -45,6 +55,8 @@ async function SingleProductPage({ params }: Params) {
           <AddToCart productId={id} />
         </div>
       </div>
+      <ProductReviews productId={id} />
+      {notReviewed && <SubmitReview productId={id} />}
     </section>
   );
 }

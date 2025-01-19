@@ -1,6 +1,6 @@
 import EmptyList from '@/components/shared/EmptyList';
 import { deleteProductAction } from '@/utils/actions';
-import { fetchAdminProducts } from '@/utils/fetchProducts';
+import { fetchAdminProducts } from '@/utils/fetchData';
 import Link from 'next/link';
 
 import { formatPrice } from '@/utils/formatPrice';

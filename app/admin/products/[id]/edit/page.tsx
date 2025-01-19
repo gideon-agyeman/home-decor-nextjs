@@ -1,5 +1,5 @@
 import { updateProductAction, updateProductImageAction } from '@/utils/actions';
-import { fetchAdminProductDetails } from '@/utils/fetchProducts';
+import { fetchAdminProductDetails } from '@/utils/fetchData';
 import FormContainer from '@/components/form/FormContainer';
 import FormInput from '@/components/form/FormInput';
 import PriceInput from '@/components/form/PriceInput';

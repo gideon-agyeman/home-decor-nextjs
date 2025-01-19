@@ -1,5 +1,5 @@
 import React from 'react';
-import { fetchFeaturedProducts } from '@/utils/fetchProducts';
+import { fetchFeaturedProducts } from '@/utils/fetchData';
 import SectionTitle from '../shared/SectionTitle';
 import ProductsGrid from '../products-page/ProductsGrid';
 

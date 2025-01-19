@@ -1,18 +1,17 @@
-import React from 'react';
-import { StarIcon } from 'lucide-react';
+import { fetchProductRating } from '@/utils/fetchData';
+import { FaStar } from 'react-icons/fa';
 
-function StarRatings({ productId }: { productId: string }) {
-  const rating = 4.9;
-  const count = 5;
+async function StarRatings({ productId }: { productId: string }) {
+  const { count, rating } = await fetchProductRating(productId);
 
-  const className = `flex gap-1 items-center text-md mt-1 mb-4`;
-  const countValue = `(${count} reviews)`;
+  const className = `flex gap-1 items-center text-md mt-1 mb-4 text-primary`;
+  const countValue = `(${count}) reviews`;
+
   return (
     <span className={className}>
-      <StarIcon className="w-3 h-3" />
+      <FaStar className="w-3 h-3" />
       {rating} {countValue}
     </span>
   );
 }
-
 export default StarRatings;
