@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import { fetchSingleProduct } from '@/utils/actions';
+import { fetchSingleProduct } from '@/utils/fetchProducts';
 import AddToCart from '@/components/single-product/AddToCart';
 import BreadCrumbs from '@/components/single-product/BreadCrumbs';
 import StarRatings from '@/components/single-product/StarRatings';

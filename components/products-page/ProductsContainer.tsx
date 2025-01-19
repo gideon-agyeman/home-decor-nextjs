@@ -1,6 +1,6 @@
 import React from 'react';
 import { Params } from '@/app/products/page';
-import { fetchAllProducts } from '@/utils/actions';
+import { fetchAllProducts } from '@/utils/fetchProducts';
 import ProductsGrid from './ProductsGrid';
 import ProductsList from './ProductsList';
 import { Separator } from '../ui/separator';
