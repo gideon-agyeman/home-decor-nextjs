@@ -9,13 +9,16 @@ import DropDownLinks from './DropDownLinks';
 function Navbar() {
   return (
     <nav className="border-b">
-      <Container className="flex flex-col sm:flex-row sm:justify-between sm:items-center flex-wrap py-8">
-        <Logo />
-        <Suspense>
-          <NavSearch />
-        </Suspense>
-
-        <div className="flex gap-4 items-center">
+      <Container className="flex items-center justify-between py-6 px-4">
+        <div className="flex items-center">
+          <Logo />
+        </div>
+        <div className="hidden sm:flex items-center justify-center w-1/2">
+          <Suspense>
+            <NavSearch />
+          </Suspense>
+        </div>
+        <div className="flex items-center gap-4">
           <Theme />
           <CartButton />
           <DropDownLinks />
