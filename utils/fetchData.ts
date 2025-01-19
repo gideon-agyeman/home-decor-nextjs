@@ -1,6 +1,7 @@
 import { redirect } from 'next/navigation';
 import db from './db';
 import { getAdminUser, getAuthUser } from './helpers';
+import { auth } from '@clerk/nextjs/server';
 
 export const fetchFeaturedProducts = async () => {
   const products = await db.product.findMany({
@@ -145,4 +146,17 @@ export const findExistingReview = async (userId: string, productId: string) => {
       productId,
     },
   });
+};
+
+export const fetchCartItems = async () => {
+  const { userId } = await auth();
+  const cart = await db.cart.findFirst({
+    where: {
+      clerkId: userId ?? '',
+    },
+    select: {
+      numItemsInCart: true,
+    },
+  });
+  return cart?.numItemsInCart || 0;
 };
