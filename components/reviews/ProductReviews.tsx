@@ -7,14 +7,11 @@ async function ProductReviews({ productId }: { productId: string }) {
 
   return (
     <div className="mt-16">
-      {reviews.length < 1 ? (
-        <SectionTitle
-          text="no reviews yet"
-          className="text-muted-foreground my-8"
-        />
-      ) : (
-        <SectionTitle text="reviews" className="text-muted-foreground" />
-      )}
+      <SectionTitle
+        text={reviews.length < 1 ? 'no reviews yet' : 'reviews'}
+        className="text-muted-foreground"
+      />
+
       <div className="grid md:grid-cols-2 gap-8 my-8">
         {reviews.map((review) => {
           const { comment, rating, authorImageUrl, authorName } = review;
