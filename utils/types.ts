@@ -1,8 +1,8 @@
-// import { Prisma } from '@prisma/client';
+import { Prisma } from '@prisma/client';
 
-// export type CartItemWithProduct = Prisma.CartItemGetPayload<{
-//   include: { product: true };
-// }>;
+export type CartItemWithProduct = Prisma.CartItemGetPayload<{
+  include: { product: true };
+}>;
 
 export type actionFunction = (
   prevState: unknown,
@@ -14,7 +14,7 @@ export type CartItem = {
   image: string;
   title: string;
   price: string;
-  amount: number;
+  quantity: number;
   company: string;
 };
 
