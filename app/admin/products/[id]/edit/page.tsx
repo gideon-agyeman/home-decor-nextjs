@@ -8,7 +8,7 @@ import { SubmitButton } from '@/components/form/Buttons';
 import CheckboxInput from '@/components/form/CheckboxInput';
 import ImageInputContainer from '@/components/form/ImageInputContainer';
 
-export async function EditProductPage({
+async function EditProductPage({
   params: paramsPromise,
 }: {
   params: Promise<{ id: string }>;
