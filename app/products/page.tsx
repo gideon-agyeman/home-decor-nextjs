@@ -2,7 +2,7 @@ import ProductsContainer from '@/components/products-page/ProductsContainer';
 import React from 'react';
 
 type SearchParams = {
-  searchParams: Params;
+  searchParams: Promise<Params>;
 };
 
 export type Params = {
