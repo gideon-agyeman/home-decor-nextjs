@@ -17,7 +17,7 @@ type Params = {
 };
 
 async function SingleProductPage({ params }: Params) {
-  const { id } = await params;
+  const { id } = params;
   const { name, image, company, description, price } = await fetchSingleProduct(
     id
   );
