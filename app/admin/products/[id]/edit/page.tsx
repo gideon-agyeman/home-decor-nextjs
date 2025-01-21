@@ -8,8 +8,12 @@ import { SubmitButton } from '@/components/form/Buttons';
 import CheckboxInput from '@/components/form/CheckboxInput';
 import ImageInputContainer from '@/components/form/ImageInputContainer';
 
-async function EditProductPage({ params }: { params: { id: string } }) {
-  const { id } = params;
+export async function EditProductPage({
+  params: paramsPromise,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const { id } = await paramsPromise;
   const product = await fetchAdminProductDetails(id);
   const { name, company, description, featured, price } = product;
 
