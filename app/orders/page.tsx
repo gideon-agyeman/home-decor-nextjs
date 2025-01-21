@@ -37,7 +37,8 @@ async function OrdersPage() {
         <TableCaption>Total Orders : {orders.length}</TableCaption>
         <TableHeader>
           <TableRow>
-            <TableHead>Products</TableHead>
+            <TableHead>Order Id</TableHead>
+            <TableHead>Num of Items</TableHead>
             <TableHead>Order Total</TableHead>
             <TableHead>Tax</TableHead>
             <TableHead>Shipping</TableHead>
@@ -46,10 +47,18 @@ async function OrdersPage() {
         </TableHeader>
         <TableBody>
           {orders.map((order) => {
-            const { products, orderTotal, tax, shipping, createdAt } = order;
+            const {
+              id,
+              products: numItems,
+              orderTotal,
+              tax,
+              shipping,
+              createdAt,
+            } = order;
             return (
               <TableRow key={order.id}>
-                <TableCell>{products}</TableCell>
+                <TableCell>{id}</TableCell>
+                <TableCell>{numItems}</TableCell>
                 <TableCell>{formatPrice(orderTotal)}</TableCell>
                 <TableCell>{formatPrice(tax)}</TableCell>
                 <TableCell>{formatPrice(shipping)}</TableCell>

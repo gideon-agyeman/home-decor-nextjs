@@ -20,8 +20,9 @@ async function SalesPage() {
       <TableCaption>Total Orders : {orders.length}</TableCaption>
       <TableHeader>
         <TableRow>
+          <TableHead>Order Id</TableHead>
           <TableHead>Email</TableHead>
-          <TableHead>Products</TableHead>
+          <TableHead>Num of Items</TableHead>
           <TableHead>Order Total</TableHead>
           <TableHead>Tax</TableHead>
           <TableHead>Shipping</TableHead>
@@ -30,13 +31,20 @@ async function SalesPage() {
       </TableHeader>
       <TableBody>
         {orders.map((order) => {
-          console.log(order);
-          const { products, orderTotal, tax, shipping, createdAt, email } =
-            order;
+          const {
+            id,
+            products: items,
+            orderTotal,
+            tax,
+            shipping,
+            createdAt,
+            email,
+          } = order;
           return (
             <TableRow key={order.id}>
+              <TableCell>{id}</TableCell>
               <TableCell>{email}</TableCell>
-              <TableCell>{products}</TableCell>
+              <TableCell>{items}</TableCell>
               <TableCell>{formatPrice(orderTotal)}</TableCell>
               <TableCell>{formatPrice(tax)}</TableCell>
               <TableCell>{formatPrice(shipping)}</TableCell>
