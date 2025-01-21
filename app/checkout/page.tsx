@@ -7,12 +7,13 @@ import {
   EmbeddedCheckoutProvider,
   EmbeddedCheckout,
 } from '@stripe/react-stripe-js';
+import { Suspense } from 'react';
 
 const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY as string
 );
 
-function CheckoutPage() {
+function CheckoutContent() {
   const searchParams = useSearchParams();
 
   const orderId = searchParams.get('orderId');
@@ -36,4 +37,13 @@ function CheckoutPage() {
     </div>
   );
 }
+
+function CheckoutPage() {
+  return (
+    <Suspense fallback={<div>Loading checkout...</div>}>
+      <CheckoutContent />
+    </Suspense>
+  );
+}
+
 export default CheckoutPage;
